@@ -151,3 +151,39 @@ VALUES ('Niedostepna','books',1),
 
 
 SELECT * FROM dbo.status 
+
+-- 1. kraje
+INSERT INTO country (country, country_short)
+VALUES 
+('Polska', 'PL'),
+('USA', 'US'),
+('Niemcy', 'DE'),
+('Francja', 'FR'),
+('Czechy', 'CZ');
+
+-- 2. autorzy książek
+INSERT INTO authors (first_name, last_name, birth_date, country_id, biography)
+VALUES 
+('Adam', 'Mickiewicz', '1798-12-24', 1, 'Polski poeta romantyczny.'),
+('Henryk', 'Sienkiewicz', '1846-05-05', 1, 'Pisarz, noblista.'),
+('John', 'Ronald', '1892-01-03', 2, 'Autor powieści hobbit'),
+('Joanne', 'Rowling', '1965-07-31', 2, 'Autorka Harry''ego Pottera.'),
+('Orwell', 'George', '1903-06-25', 4, 'Autor rok 1984');
+
+-- 3. książki
+INSERT INTO books (title, isbn, publication_year, publisher, genre, available_copies, total_copies, status_id)
+VALUES
+('Pan Tadeusz', '9788307031234', 1834, 'PWN', 'Epopeja', 3, 5, 1),
+('Quo Vadis', '9788373270590', 1896, 'Świat Książki', 'Powieść historyczna', 2, 3, 1),
+('Hobbit', '9780450040184', 1937, 'Doubleday', 'Science fiction', 4, 4, 1),
+('Harry Potter i Kamień Filozoficzny', '9780747532699', 1997, 'Bloomsbury', 'Fantasy', 1, 2, 1),
+('Rok 1984', '0451524935', 1949, 'SBM', 'science fiction', 1, 1, 1);
+
+-- 4. autor-ksiazka relacje
+INSERT INTO authorsBooks (author_id, book_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
